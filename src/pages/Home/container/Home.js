@@ -5,7 +5,7 @@ import fetchCategory from '../../../redux/actions/fetchCategory';
 
 import authenticateUserAction from '../../../redux/actions/authenticateUserAction';
 
-export default function Home(props) {
+export default function Home() {
     const dispatch=useDispatch();
     useEffect(()=>{
          dispatch(fetchCategory("jewelery"));
@@ -13,21 +13,21 @@ export default function Home(props) {
          dispatch(fetchCategory("women's clothing"));
          dispatch(fetchCategory("electronics"));
          dispatch(authenticateUserAction.getStatus());
-         checkStatus();
+        
     },[])
 
     const jewelary= useSelector((state)=>state.categoryReducer.jewelary);
     const menCloths= useSelector((state)=>state.categoryReducer.menClothes);
     const womenCloths= useSelector((state)=>state.categoryReducer.womenClothes);
     const electronics= useSelector((state)=>state.categoryReducer.electronics);
-    const registerdUsers = useSelector((state) => state.authenticateUserReducer.registerdUsers);
-    const checkStatus = () =>{
-        const loginUser = registerdUsers.filter((user)=>user.loginStatus===true)
+    // const registerdUsers = useSelector((state) => state.authenticateUserReducer.registerdUsers);
+    // const checkStatus = () =>{
+    //     const loginUser = registerdUsers.filter((user)=>user.loginStatus===true)
      
-        if(loginUser){
+    //     if(loginUser){
 
-        }
-    }
+    //     }
+    // }
    
     return (
         <HomeUi jewelary={jewelary} menCloths={menCloths} womenCloths={womenCloths} electronics={electronics}/>
